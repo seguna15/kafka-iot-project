@@ -9,6 +9,9 @@ points = [[50.150874, 14.563832], [50.104217, 14.4757], [49.966785, 14.370114], 
 
 temperatures = [37, 37.1, 37.2, 37.3, 37.4, 37.5, 37.6, 37.7, 37.8,  37.9, 38, 38.1, 38.2, 38.3, 38.4, 38.5, 38.6, 38.8, 38.8,  38.9, 39,  39.1, 39.2, 39.3, 39.4, 39.5, 39.6, 39.9, 39.9,  39.9, 40]
 
+heartbeat = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61,
+62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
+
 """ def generate_message() -> dict: 
     random_user_id  = random.choice(user_ids)
     random_location = random.choice(points)
@@ -31,6 +34,7 @@ temperatures = [37, 37.1, 37.2, 37.3, 37.4, 37.5, 37.6, 37.7, 37.8,  37.9, 38, 3
 def generate_message() -> dict: 
     random_location = random.choice(points)
     random_temperature = random.choice(temperatures)
+    random_heartbeat = random.choice(heartbeat)
    
 
     # generate random message
@@ -41,9 +45,10 @@ def generate_message() -> dict:
         "longitude": random_location[1],
         "latitude": random_location[0],
         "temperature": random_temperature,
+        "heartbeat": random_heartbeat,
         "timestamp": str(datetime.now())
     }
 
  # Testing
-""" if __name__ == '__main__':
-    print(generate_message())  """
+if __name__ == '__main__':
+    print(generate_message())  

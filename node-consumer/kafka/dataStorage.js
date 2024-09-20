@@ -7,6 +7,7 @@ const dataStorage = async(data) => {
         longitude : data.longitude,
         latitude : data.latitude,
         temperature : data.temperature,
+        heartbeat: data.heartbeat,
         timestamp : data.timestamp,
     })
  

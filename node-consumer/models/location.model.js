@@ -18,6 +18,10 @@ const locationSchema = new Schema({
         type: Number,
         required:true
     },
+    heartbeat: {
+        type: Number,
+        required:true
+    },
     timestamp: {
         type: Date,
         required:true
