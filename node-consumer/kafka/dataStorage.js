@@ -2,16 +2,19 @@ import Location from "../models/location.model.js";
 
 const dataStorage = async(data) => {
     
-    const location = await Location.create({
-        slug: data.slug,
-        longitude : data.longitude,
-        latitude : data.latitude,
-        temperature : data.temperature,
-        heartbeat: data.heartbeat,
-        timestamp : data.timestamp,
-    })
+    data.forEach(async(item) => {
+        await Location.create({
+            sensorTag: item.sensorTag,
+            slug: item.slug,
+            longitude : item.longitude,
+            latitude : item.latitude,
+            temperature : item.temperature,
+            heartbeat: item.heartbeat,
+            timestamp : item.timestamp,
+        })
+    });
  
-    return location; 
+    return `${data.length} items stored successfully`; 
 }
 
 export default dataStorage;

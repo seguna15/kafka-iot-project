@@ -8,7 +8,7 @@ import hourlySummaryCtrl from "../controllers/hourlySummaryCtrl.js";
 const statsRoutes = express.Router();
 
 statsRoutes
-  .get("/daily", isLoggedIn, catchAsyncError(dailySummaryCtrl))
-  .get("/hourly", isLoggedIn, catchAsyncError(hourlySummaryCtrl))
+  .get("/daily/:sensorTag", isLoggedIn, catchAsyncError(dailySummaryCtrl))
+  .get("/hourly/:sensorTag", isLoggedIn, catchAsyncError(hourlySummaryCtrl))
 
 export default statsRoutes;

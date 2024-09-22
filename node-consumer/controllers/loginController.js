@@ -17,7 +17,7 @@ const loginCtrl = async (req, res) => {
 
     if(!email || !password) throw new ErrorHandler("Email and Password must be present", 400)
 
-    const existingUser = await User.findOne({email});
+    const existingUser = await User.findOne({ email: email.toLowerCase() });
 
     if(!existingUser) throw new ErrorHandler("Invalid credentials", 403);
     

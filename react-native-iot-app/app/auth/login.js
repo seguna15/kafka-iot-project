@@ -57,7 +57,7 @@ const Login = () => {
               dispatch(loginUserAction(data));
               router.push("/(tabs)");
             })
-            .catch((error) => {});
+            .catch((error) => {console.log(JSON.stringify(error))});
 
           //
         }}

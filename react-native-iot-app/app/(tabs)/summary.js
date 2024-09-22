@@ -1,44 +1,60 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { fetchDailySummary, fetchSensors } from "../(services)/api/api";
+import DropDown from "../../component/DropDown";
+import SummaryComponent from "../../component/SummaryComponent";
 
-import { fetchDailySummary } from "../(services)/api/api";
-
-const TabHome = () => {
+const Summary = () => {
   const [stats, setStats] = useState(null);
+  const [sensors, setSensors] = useState({})
+  const [sensor, setSensor] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const fetchData  = async () => {
-      const data = await fetchDailySummary();
-      setStats({...data.dailySummary});
+  const fetchSensorsList  = async () => {
+      const {sensors} = await fetchSensors();
+      setSensors([...sensors]);
   }
+
   useEffect(() => {
-    fetchData()
+    fetchSensorsList();
   },[])
-	
+
+  //handleSelect
+  const handleSelect = async(item) => {
+    setLoading(true);
+    setSensor(item)
+    const {dailySummary} = await fetchDailySummary(item);
+    setLoading(false)
+    setStats({...dailySummary?.[0]})
+
+  } 
+
+  console.log(stats)
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Daily Summary</Text>
-      <Text style={styles.subtitle}>Realtime Data:</Text>
-      <View style={styles.techList}>
-        <LinearGradient colors={["#61DBFB", "#35AFC2"]} style={styles.techItem}>
-          
-          <Text style={styles.techText}>Average Temp: {stats?.avgTemp}&#x2103;</Text>
-        </LinearGradient>
-        <LinearGradient colors={["#764ABC", "#543B9A"]} style={styles.techItem}>
-         
-          <Text style={styles.techText}>Min Temp: {stats?.minTemp}&#x2103;</Text>
-        </LinearGradient>
-        <LinearGradient colors={["#FF4154", "#D12B3A"]} style={styles.techItem}>
-         
-          <Text style={styles.techText}>Max Temp: {stats?.maxTemp}&#x2103;</Text>
-        </LinearGradient>
-       
-      </View>
+      {loading ? (
+        <ActivityIndicator
+          animating={true}
+          size="large"
+          style={{ opacity: 1 }}
+          color="#8ac926"
+        />
+      ) : (
+        <>
+          <DropDown
+            sensors={sensors}
+            sensor={sensor}
+            handleSelect={handleSelect}
+          />
+          <SummaryComponent sensor={sensor} stats={stats}/>
+        </>
+      )}
     </View>
   );
 };
 
-export default TabHome;
+export default Summary;
 
 const styles = StyleSheet.create({
   container: {
@@ -47,11 +63,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     backgroundColor: "#f5f5f5",
+    gap: 10,
   },
   title: {
-    fontSize: 32,
+    fontSize: 22,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 5,
     textAlign: "center",
     color: "#333",
   },
@@ -83,5 +100,9 @@ const styles = StyleSheet.create({
     color: "#fff",
     marginLeft: 10,
     fontWeight: "bold",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
   },
 });

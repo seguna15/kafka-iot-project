@@ -7,7 +7,6 @@ export default function RootLayout() {
     return (
       <ProtectedRoute>
         <Tabs screenOptions={{ tabBarActiveTintColor: "#8ac926" }}>
-          
           <Tabs.Screen
             name="index"
             options={{
@@ -28,6 +27,28 @@ export default function RootLayout() {
               ),
             }}
           />
+
+          <Tabs.Screen
+            name="visualization"
+            options={{
+              headerShown: false,
+              title: "Visualization",
+              tabBarIcon: ({ color }) => (
+                <FontAwesome name="line-chart" color={color} size={28} />
+              ),
+            }}
+          />
+
+          <Tabs.Screen
+            name="summary"
+            options={{
+              headerShown: false,
+              title: "Summary",
+              tabBarIcon: ({ color }) => (
+                <FontAwesome name="book" color={color} size={28} />
+              ),
+            }}
+          />
           <Tabs.Screen
             name="settings"
             options={{
@@ -35,16 +56,6 @@ export default function RootLayout() {
               title: "Settings",
               tabBarIcon: ({ color }) => (
                 <FontAwesome name="cog" color={color} size={28} />
-              ),
-            }}
-          />
-          <Tabs.Screen
-            name="summary"
-            options={{
-              headerShown: false,
-              title: "Daily Summary",
-              tabBarIcon: ({ color }) => (
-                <FontAwesome name="bell" color={color} size={28} />
               ),
             }}
           />

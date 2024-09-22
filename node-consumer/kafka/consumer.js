@@ -17,9 +17,9 @@ const startConsumer = async () => {
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       
-      const value = await dataStorage(JSON.parse(message.value))
+      const responseMessage = await dataStorage(JSON.parse(message.value))
       console.log({
-        value,
+        responseMessage,
         topic,
         partition,
       });

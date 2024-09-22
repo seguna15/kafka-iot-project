@@ -32,23 +32,61 @@ heartbeat = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
     } """
 
 def generate_message() -> dict: 
-    random_location = random.choice(points)
-    random_temperature = random.choice(temperatures)
-    random_heartbeat = random.choice(heartbeat)
-   
+    
+    
 
     # generate random message
     message = ''.join(random.choice(string.ascii_letters) for i in range(32))
 
-    return {
-        'slug': message,
-        "longitude": random_location[1],
-        "latitude": random_location[0],
-        "temperature": random_temperature,
-        "heartbeat": random_heartbeat,
-        "timestamp": str(datetime.now())
-    }
+    return [ 
+        {
+            "sensorTag": "sensor0001",
+            'slug': message,
+            "longitude":  random.choice(points)[1],
+            "latitude":  random.choice(points)[0],
+            "temperature": random.choice(temperatures),
+            "heartbeat": random.choice(heartbeat),
+            "timestamp": str(datetime.now())
+        },
+        {
+            "sensorTag": "sensor0002",
+            'slug': message,
+            "longitude":  random.choice(points)[1],
+            "latitude":  random.choice(points)[0],
+            "temperature": random.choice(temperatures),
+            "heartbeat": random.choice(heartbeat),
+            "timestamp": str(datetime.now())
+        },
+        {
+            "sensorTag": "sensor0003",
+            'slug': message,
+            "longitude":  random.choice(points)[1],
+            "latitude":  random.choice(points)[0],
+            "temperature": random.choice(temperatures),
+            "heartbeat": random.choice(heartbeat),
+            "timestamp": str(datetime.now())
+        },
+        {
+            "sensorTag": "sensor0004",
+            'slug': message,
+            "longitude":  random.choice(points)[1],
+            "latitude":  random.choice(points)[0],
+            "temperature": random.choice(temperatures),
+            "heartbeat": random.choice(heartbeat),
+            "timestamp": str(datetime.now())
+        },
+        {
+            "sensorTag": "sensor0005",
+            'slug': message,
+            "longitude":  random.choice(points)[1],
+            "latitude":  random.choice(points)[0],
+            "temperature": random.choice(temperatures),
+            "heartbeat": random.choice(heartbeat),
+            "timestamp": str(datetime.now())
+        },
+        
+    ]
 
  # Testing
-if __name__ == '__main__':
-    print(generate_message())  
+""" if __name__ == '__main__':
+    print(generate_message())   """

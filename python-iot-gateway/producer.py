@@ -1,6 +1,5 @@
 import time
 import json
-import random
 from datetime import datetime
 from data_generator import generate_message
 from kafka import KafkaProducer
@@ -25,6 +24,7 @@ if __name__ == '__main__':
         # send it to our "messages"  topic
         print(f'producing message @ {datetime.now()} | Message = {str(dummy_message)}')
         producer.send('messages', dummy_message)
+       
 
         #sleep for a random number of seconds
         time_to_sleep = 60
