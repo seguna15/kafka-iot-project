@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from "react-native";
 import { fetchHourlySummary, fetchSensors } from "../(services)/api/api";
 import DropDown from "../../component/DropDown";
 import LineChartComponent from "../../component/LineChartComponent";
@@ -47,9 +47,12 @@ const Visualization = () => {
             sensor={sensor}
             handleSelect={handleSelect}
           />
-          <Text style={styles.title}>Hourly Summary</Text>
-          <Text style={styles.title}>{sensor.toUpperCase() || " "}</Text>
-          {stats !== null && <LineChartComponent stats={stats} />}
+          
+          <ScrollView>
+            <Text style={styles.title}>Hourly Summary</Text>
+            <Text style={styles.title}>{sensor.toUpperCase() || " "}</Text>
+            {stats !== null && <LineChartComponent stats={stats} />}
+          </ScrollView>
         </>
       )}
     </View>
@@ -64,6 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+    paddingTop: 30,
     backgroundColor: "#f5f5f5",
     gap: 10,
   },

@@ -1,7 +1,7 @@
 import axios from "axios";
  import { loadUserFromStorage } from "../../(redux)/authSlice";
 
-const base_url = process.env.BACKEND_API; 
+export const base_url = process.env.BACKEND_API; 
 
 //login
 export const loginUser = async ({email, password}) => {
@@ -81,6 +81,23 @@ export const fetchHourlySummary = async (sensor) => {
     const {token}  =  await loadUserFromStorage()
     try {
         const response = await axios.get(`${base_url}/stats/hourly/${sensor}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+   
+        return response.data
+
+    } catch (error) {
+        console.log(JSON.stringify(error))
+    }
+}
+
+export const exportDailyData = async () => {
+    const {token}  =  await loadUserFromStorage()
+    try {
+        const response = await axios.get(`${base_url}/export-data/today`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -7,6 +7,7 @@ import authRoutes from "../routes/authRoutes.js";
 import locationRoutes from "../routes/locationRoutes.js";
 import statsRoute from "../routes/statsRoute.js";
 import userRoutes from "../routes/userRoutes.js";
+import fileExportRoutes from "../routes/fileExportRoutes.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(`${API_VERSION}/auth`, authRoutes)
 app.use(`${API_VERSION}/user`, userRoutes)
 app.use(`${API_VERSION}/location`, locationRoutes)
 app.use(`${API_VERSION}/stats`, statsRoute);
+app.use(`${API_VERSION}/export-data`, fileExportRoutes);
 
 app.use(notFound)
 app.use(globalErrHandler)

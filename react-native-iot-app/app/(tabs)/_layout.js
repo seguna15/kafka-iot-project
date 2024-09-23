@@ -11,19 +11,9 @@ export default function RootLayout() {
             name="index"
             options={{
               headerShown: false,
-              title: "Home",
+              title: "Map",
               tabBarIcon: ({ color }) => (
-                <FontAwesome name="home" color={color} size={28} />
-              ),
-            }}
-          />
-          <Tabs.Screen
-            name="profile"
-            options={{
-              headerShown: false,
-              title: "Profile",
-              tabBarIcon: ({ color }) => (
-                <FontAwesome name="user" color={color} size={28} />
+                <FontAwesome name="map" color={color} size={28} />
               ),
             }}
           />
@@ -50,12 +40,22 @@ export default function RootLayout() {
             }}
           />
           <Tabs.Screen
-            name="settings"
+            name="exports"
             options={{
               headerShown: false,
-              title: "Settings",
+              title: "Exports",
               tabBarIcon: ({ color }) => (
-                <FontAwesome name="cog" color={color} size={28} />
+                <FontAwesome name="file" color={color} size={28} />
+              ),
+            }}
+          />
+          <Tabs.Screen
+            name="profile"
+            options={{
+              headerShown: false,
+              title: "Profile",
+              tabBarIcon: ({ color }) => (
+                <FontAwesome name="user" color={color} size={28} />
               ),
             }}
           />

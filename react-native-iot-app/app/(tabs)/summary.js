@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from "react-native";
 import { fetchDailySummary, fetchSensors } from "../(services)/api/api";
 import DropDown from "../../component/DropDown";
 import SummaryComponent from "../../component/SummaryComponent";
@@ -29,7 +29,7 @@ const Summary = () => {
 
   } 
 
-  console.log(stats)
+ 
 
   return (
     <View style={styles.container}>
@@ -47,7 +47,9 @@ const Summary = () => {
             sensor={sensor}
             handleSelect={handleSelect}
           />
-          <SummaryComponent sensor={sensor} stats={stats}/>
+          <ScrollView style={styles.scrollView}>
+            <SummaryComponent sensor={sensor} stats={stats} />
+          </ScrollView>
         </>
       )}
     </View>
@@ -61,7 +63,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    paddingHorizontal: 10,
+    paddingTop: 30,
+    paddingBottom: 10,
     backgroundColor: "#f5f5f5",
     gap: 10,
   },
@@ -79,30 +83,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#666",
   },
-  techList: {
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-  },
-  techItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "90%",
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    borderRadius: 10,
-    marginBottom: 15,
-    elevation: 5,
-  },
-  techText: {
-    fontSize: 18,
-    color: "#fff",
-    marginLeft: 10,
-    fontWeight: "bold",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-  },
+  scrollView : {
+    width: "100%"
+  }
+  
+  
 });

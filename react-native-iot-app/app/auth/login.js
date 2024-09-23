@@ -48,7 +48,7 @@ const Login = () => {
 
       {/* Formik configuration */}
       <Formik
-        initialValues={{ email: "user1@email.com", password: "123456" }}
+        initialValues={{ email: "", password: "" }}
         onSubmit={(values) => {
           //calling mutation
           mutation
