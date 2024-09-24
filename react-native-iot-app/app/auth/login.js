@@ -1,8 +1,8 @@
 import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { Formik } from 'formik'
 import * as Yup from "yup"
-import { Stack, useRouter } from 'expo-router';
+import { Stack, useRouter, useFocusEffect } from 'expo-router';
 import { useMutation } from '@tanstack/react-query';
 import { loginUser } from '../(services)/api/api';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,7 +27,12 @@ const Login = () => {
     
     const router = useRouter();
 
-    
+    useFocusEffect(()=>{
+      
+      if(auth?.user){
+        router.push("/(tabs)");
+      }
+    })
 
     
   return (
@@ -49,12 +54,13 @@ const Login = () => {
       {/* Formik configuration */}
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => {
+        onSubmit={(values, {resetForm}) => {
           //calling mutation
           mutation
             .mutateAsync(values)
             .then((data) => {
               dispatch(loginUserAction(data));
+              resetForm()
               router.push("/(tabs)");
             })
             .catch((error) => {console.log(JSON.stringify(error))});

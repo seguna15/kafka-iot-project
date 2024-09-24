@@ -11,7 +11,7 @@ import bcrypt from "bcryptjs"
  ** @access PUBLIC
 */
 const registrationCtrl = async (req, res) => {
-
+    console.log(req?.body);
     const {username, email, password} = req?.body;
 
     if(!username || !email || !password) throw new ErrorHandler("Username, email and password must be present", 400)

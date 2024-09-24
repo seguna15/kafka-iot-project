@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutAction } from '../(redux)/authSlice';
 
@@ -12,6 +13,8 @@ const Profile = () => {
     dispatch(logoutAction());
    }
 
+   
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>User Profile</Text>

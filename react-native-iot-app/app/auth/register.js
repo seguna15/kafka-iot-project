@@ -32,7 +32,7 @@ const Register = () => {
     mutationKey: ["register"],
   });
 
- 
+  
 
    const router = useRouter();
 
@@ -59,16 +59,18 @@ const Register = () => {
           password: "",
           confirmPassword: "",
         }}
-        onSubmit={(values) => {
+        onSubmit={(values, {resetForm}) => {
           
           //calling mutation
           mutation
             .mutateAsync(values)
             .then((data) => {
+              resetForm()
               router.push("auth/login");
             })
             .catch((error) => {
-              //console.log(error);
+              console.log(JSON.stringify(error));
+              console.log(error);
             });
 
           
@@ -180,6 +182,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginBottom: 16,
     backgroundColor: "#fff",
+  },
+  
+  successText: {
+    color: "#8ac926",
+    marginBottom: 16,
   },
   errorText: {
     color: "red",
