@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     marginBottom: 16,
+    textTransform: "capitalize",
   },
   button: {
     height: 50,

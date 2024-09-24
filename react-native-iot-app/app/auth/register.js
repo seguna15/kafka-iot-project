@@ -38,7 +38,7 @@ const Register = () => {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: "Register", }} />
+      <Stack.Screen options={{ title: "Register" }} />
       <Text style={styles.title}>Register</Text>
 
       {/* Display messages */}
@@ -59,21 +59,18 @@ const Register = () => {
           password: "",
           confirmPassword: "",
         }}
-        onSubmit={(values, {resetForm}) => {
-          
+        onSubmit={(values, { resetForm }) => {
           //calling mutation
           mutation
             .mutateAsync(values)
             .then((data) => {
-              resetForm()
+              resetForm();
               router.push("auth/login");
             })
             .catch((error) => {
               console.log(JSON.stringify(error));
               console.log(error);
             });
-
-          
         }}
         validationSchema={validationSchema}
       >
@@ -151,6 +148,9 @@ const Register = () => {
           </View>
         )}
       </Formik>
+      <TouchableOpacity onPress={() => router.push("/auth/login")}>
+        <Text style={styles.linkText}>Have an account ? Click to login</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     backgroundColor: "#fff",
   },
-  
+
   successText: {
     color: "#8ac926",
     marginBottom: 16,
@@ -204,5 +204,11 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  linkText: {
+    color: "#333",
+    marginTop: 20,
+    fontSize: 16,
+    fontWeight: "400",
   },
 });

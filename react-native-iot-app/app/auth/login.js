@@ -34,10 +34,10 @@ const Login = () => {
       }
     })
 
-    
+  
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{title: "Login"}} />
+      <Stack.Screen options={{ title: "Login" }} />
       <Image style={styles.image} source={require("../../assets/logo.png")} />
       <Text style={styles.title}>Login</Text>
 
@@ -54,16 +54,18 @@ const Login = () => {
       {/* Formik configuration */}
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values, {resetForm}) => {
+        onSubmit={(values, { resetForm }) => {
           //calling mutation
           mutation
             .mutateAsync(values)
             .then((data) => {
               dispatch(loginUserAction(data));
-              resetForm()
+              resetForm();
               router.push("/(tabs)");
             })
-            .catch((error) => {console.log(JSON.stringify(error))});
+            .catch((error) => {
+              console.log(JSON.stringify(error));
+            });
 
           //
         }}
@@ -117,6 +119,10 @@ const Login = () => {
           </View>
         )}
       </Formik>
+
+      <TouchableOpacity onPress={() => router.push("/auth/register")}>
+        <Text style={styles.linkText}>Do not have an account? Click to register</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -178,5 +184,11 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  linkText: {
+    color: "#333",
+    marginTop: 20,
+    fontSize: 16,
+    fontWeight: "400",
   },
 });
