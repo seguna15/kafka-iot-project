@@ -38,7 +38,7 @@ const Register = () => {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: "Register" }} />
+      <Stack.Screen options={{ title: "Register", headerShown: false }} />
       <Text style={styles.title}>Register</Text>
 
       {/* Display messages */}

@@ -37,7 +37,7 @@ const Login = () => {
   
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: "Login" }} />
+      <Stack.Screen options={{ title: "Login", headerShown: false }} />
       <Image style={styles.image} source={require("../../assets/logo.png")} />
       <Text style={styles.title}>Login</Text>
 
