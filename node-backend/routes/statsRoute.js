@@ -2,8 +2,8 @@ import express from "express";
 import ExpressValidator from "express-joi-validation";
 import catchAsyncError from "../middlewares/catchAsyncErr.js";
 import isLoggedIn from "../middlewares/isLoggedIn.js";
-import dailySummaryCtrl from "../controllers/dailySummaryCtrl.js";
-import hourlySummaryCtrl from "../controllers/hourlySummaryCtrl.js";
+import dailySummaryCtrl from "../controllers/analytics/dailySummaryCtrl.js";
+import hourlySummaryCtrl from "../controllers/analytics/hourlySummaryCtrl.js";
 import { sensorSchema } from "../validators/validators.js";
 
 

@@ -1,4 +1,4 @@
-FROM node:20-alpine3.19
+FROM node:20.10.0
 
 WORKDIR /usr/src/app/node_consumer
 
@@ -8,5 +8,7 @@ RUN npm install
 
 COPY . .
 
-CMD [ "npm", "start" ]
+#EXPOSE 8000
+
+CMD [ "npm", "run", "dev" ]
 

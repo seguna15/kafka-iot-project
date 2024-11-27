@@ -11,6 +11,7 @@ const AppWrapper = () => {
     useEffect(() =>{
         dispatch(loadUser())
     },[loadUser])
+    
   return (
     <Stack>
       <Stack.Screen
@@ -19,8 +20,8 @@ const AppWrapper = () => {
       />
 
       <Stack.Screen
-        name="(tabs)"
-        options={{  title: "Tabs", headerShown: false, }}
+        name="(drawer)"
+        options={{  title: "Drawer", headerShown: false, }}
       />
     </Stack>
   );

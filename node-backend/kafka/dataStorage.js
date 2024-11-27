@@ -5,6 +5,7 @@ const dataStorage = async(data) => {
     data.forEach(async(item) => {
         await Location.create({
             sensorTag: item.sensorTag,
+            animalTag: item.animalTag,
             slug: item.slug,
             longitude : item.longitude,
             latitude : item.latitude,

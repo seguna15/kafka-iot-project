@@ -2,7 +2,7 @@ import axios from "axios";
  import { loadUserFromStorage } from "../../(redux)/authSlice";
 
 export const base_url = process.env.BACKEND_API; 
-console.log(base_url)
+
 //login
 export const loginUser = async ({email, password}) => {
     
@@ -46,12 +46,12 @@ export const fetchSensors = async () => {
   const { token } = await loadUserFromStorage();
 
   try {
-    const response = await axios.get(`${base_url}/location/sensors`, {
+    const response = await axios.get(`${base_url}/animals/active/get`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
+   
     return response.data;
   } catch (error) {
     console.log(error);
@@ -105,6 +105,40 @@ export const exportDailyData = async () => {
         
    
         return response.data
+
+    } catch (error) {
+        console.log(JSON.stringify(error))
+    }
+}
+
+export const getSensorForEdit = async (id) => {
+    const {token}  =  await loadUserFromStorage()
+    try {
+        const response = await axios.get(`${base_url}/sensors/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        
+        return response.data.sensor
+
+    } catch (error) {
+        console.log(JSON.stringify(error))
+    }
+}
+
+export const getAnimalForEdit = async (id) => {
+    const {token}  =  await loadUserFromStorage()
+    try {
+        const response = await axios.get(`${base_url}/animals/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+      
+        return response.data.animal
 
     } catch (error) {
         console.log(JSON.stringify(error))

@@ -30,7 +30,7 @@ const Login = () => {
     useFocusEffect(()=>{
       
       if(auth?.user){
-        router.push("/(tabs)");
+        router.push("/(drawer)");
       }
     })
 
@@ -61,7 +61,7 @@ const Login = () => {
             .then((data) => {
               dispatch(loginUserAction(data));
               resetForm();
-              router.push("/(tabs)");
+              router.push("/(drawer)");
             })
             .catch((error) => {
               console.log(JSON.stringify(error));

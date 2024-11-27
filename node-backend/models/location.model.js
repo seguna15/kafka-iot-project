@@ -4,6 +4,12 @@ const Schema = mongoose.Schema;
 const locationSchema = new Schema({
   sensorTag: {
     type: String,
+    ref: "Sensor",
+    required: true,
+  },
+  animalTag: {
+    type: String,
+    ref: "Animal",
     required: true,
   },
   slug: {

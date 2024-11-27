@@ -1,10 +1,10 @@
 import express from "express";
 import catchAsyncError from "../middlewares/catchAsyncErr.js";
 import isLoggedIn from "../middlewares/isLoggedIn.js";
-import exportDailyData from "../controllers/exportDailyCSV.js";
-import exportMonthlyData from "../controllers/exportMonthlyCSV.js";
-import exportYearlyData from "../controllers/exportYearlyCSV.js";
-import exportAllTimeData from "../controllers/exportAllTimeCSV.js";
+import exportDailyData from "../controllers/fileExports/exportDailyCSV.js";
+import exportMonthlyData from "../controllers/fileExports/exportMonthlyCSV.js";
+import exportYearlyData from "../controllers/fileExports/exportYearlyCSV.js";
+import exportAllTimeData from "../controllers/fileExports/exportAllTimeCSV.js";
 
 const fileExportRoutes = express.Router();
 

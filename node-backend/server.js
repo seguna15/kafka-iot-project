@@ -4,7 +4,7 @@ import startConsumer from "./kafka/consumer.js";
 import app from "./app/app.js";
 
 dbConnection();
-startConsumer();
+startConsumer(); 
 
 const PORT = process.env.PORT || 8000;
 const server = http.createServer(app)

@@ -5,7 +5,8 @@ import dataStorage from "./dataStorage.js";
 const kafka = new Kafka({
   clientId: "simple-producer-consumer-application",
   //brokers: ["broker:29092"],
-  brokers: ["localhost:9092"],
+  brokers: ["localhost:9092"]
+  
 });
 
 const startConsumer = async () => {
