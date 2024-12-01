@@ -45,7 +45,7 @@ export default function Location() {
           >
             {mapRegion?.mapData?.map((location) => (
               <Marker
-                key={location?.animalTag}
+                key={location?._id}
                 coordinate={{
                   latitude: location?.latitude,
                   longitude: location?.longitude,

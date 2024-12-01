@@ -51,7 +51,7 @@ const Visualization = () => {
           <ScrollView>
             <Text style={styles.title}>Hourly Summary</Text>
             <Text style={styles.title}>{sensor.toUpperCase() || " "}</Text>
-            {stats !== null && <LineChartComponent stats={stats} />}
+            {stats !== null  && <LineChartComponent stats={stats} />}
           </ScrollView>
         </>
       )}

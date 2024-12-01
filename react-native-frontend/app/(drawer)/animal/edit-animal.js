@@ -94,7 +94,6 @@ export default function EditAnimal() {
              </View>
            </TouchableOpacity>
 
-          
            <Text style={styles.title}>Edit Animal</Text>
            <ScrollView style={styles.form}>
              <Text style={styles.labelText}>Weight(kg)</Text>
@@ -103,7 +102,6 @@ export default function EditAnimal() {
                placeholder="weight"
                value={weight}
                onChangeText={setWeight}
-               
              />
              <Text style={styles.labelText}>Height(cm)</Text>
              <TextInput
@@ -119,7 +117,6 @@ export default function EditAnimal() {
                placeholder="age"
                value={age}
                onChangeText={setAge}
-               
              />
 
              <Text style={styles.labelText}>Gender</Text>
@@ -129,6 +126,7 @@ export default function EditAnimal() {
                onValueChange={(currentGender) => setGender(currentGender)}
                style={styles.input}
              >
+             
                {GENDER?.map((gender) => (
                  <Picker.Item key={gender} label={gender} value={gender} />
                ))}
@@ -143,6 +141,8 @@ export default function EditAnimal() {
                }
                style={styles.input}
              >
+               <Picker.Item key="" label="select a sensor" value="" />
+               
                {sensors?.map((sensor) => (
                  <Picker.Item
                    key={sensor?._id}

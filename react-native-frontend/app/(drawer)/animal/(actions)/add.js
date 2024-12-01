@@ -38,7 +38,7 @@ const AddAnimal = () => {
   const [sensorTag, setSensorTag] = useState("")
   const [description, setDescription] = useState("")
   
-  
+  console.log(gender, sensorTag)
   const handleSubmit = async () => {
     if (
       weight === "" ||
@@ -95,33 +95,40 @@ const AddAnimal = () => {
           keyboardType="numeric"
         />
 
-        <Text style={styles.labelText}>Gender</Text>
-        <Picker
-          selectedValue={gender}
-          value={gender}
-          onValueChange={(currentGender) => setGender(currentGender)}
-          style={styles.input}
-        >
-          {GENDER?.map((gender) => (
-            <Picker.Item key={gender} label={gender} value={gender} />
-          ))}
-        </Picker>
+        <View>
+          <Text style={styles.labelText}>Gender</Text>
+          <Picker
+            selectedValue={gender}
+            value={gender}
+            onValueChange={(currentGender) => setGender(currentGender)}
+            style={styles.picker}
+          >
+            {GENDER?.map((gender) => (
+              <Picker.Item key={gender} label={gender} value={gender} />
+            ))}
+          </Picker>
+        </View>
 
-        <Text style={styles.labelText}>Attach Sensor</Text>
-        <Picker
-          selectedValue={sensorTag}
-          value={sensorTag}
-          onValueChange={(currentSensorTag) => setSensorTag(currentSensorTag)}
-          style={styles.input}
-        >
-          {sensors?.map((sensor) => (
-            <Picker.Item
-              key={sensor?._id}
-              label={sensor?.sensorTag}
-              value={sensor?.sensorTag}
-            />
-          ))}
-        </Picker>
+        <View>
+          <Text style={styles.labelText}>Attach Sensor</Text>
+          <Picker
+            selectedValue={sensorTag}
+            value={sensorTag}
+            onValueChange={(currentSensorTag) => setSensorTag(currentSensorTag)}
+            style={styles.picker}
+          >
+            <Picker.Item key="67gg" label="select a sensor" value="" />
+            {
+              sensors.length > 0 && (sensors?.map((sensor) => (
+                <Picker.Item
+                  key={sensor?._id}
+                  label={sensor?.sensorTag}
+                  value={sensor?.sensorTag}
+                />
+              ))) 
+            }
+          </Picker>
+        </View>
 
         <Text style={styles.labelText}>Animal Description</Text>
         <TextInput
@@ -190,6 +197,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginBottom: 16,
     backgroundColor: "#fff",
+  },
+  picker: {
+    width: 300,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#666",
   },
   textarea: {
     height: 200,

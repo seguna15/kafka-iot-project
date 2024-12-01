@@ -19,7 +19,7 @@ export default function AnimalList() {
   },[isFocused, fetchAllAnimals])
 
   const {animals, status} = useSelector(state => state?.animals);
-
+ 
   return (
     <View style={styles.container}>
       {status === "Loading" ? (
@@ -40,8 +40,8 @@ export default function AnimalList() {
                 <DataTable.Title>Edit</DataTable.Title>
                 <DataTable.Title>Detach</DataTable.Title>
               </DataTable.Header>
-              {animals?.map((animal) => (
-                <DataTable.Row key={animal?._id}>
+              {animals?.map((animal, index) => (
+                <DataTable.Row key={index}>
                   <DataTable.Cell>{animal?.animalTag}</DataTable.Cell>
 
                   <DataTable.Cell>

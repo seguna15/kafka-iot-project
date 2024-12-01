@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, FlatList, Modal, Platform } f
 import React, { useCallback, useRef, useState } from 'react'
 import  {AntDesign} from "@expo/vector-icons"
 
-const DropDown = ({sensors, handleSelect, sensor}) => {
+const DropDown = ({sensors, handleSelect}) => {
   const [expanded, setExpanded] = useState(false);
  
   const toggleExpanded = useCallback(() => {setExpanded(!expanded)},[expanded])

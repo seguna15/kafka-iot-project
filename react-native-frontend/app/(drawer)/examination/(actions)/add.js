@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { fetchSensors } from '../../../(services)/api/api';
 import { createExamination } from '../../../(redux)/examinationSlice';
+import DropDown from '../../../../component/DropDown';
 
 const GENDER = [
   "male", "female"
@@ -46,7 +47,6 @@ const AddExamination = () => {
   const [animalTag, setAnimalTag] = useState("")
   const [comment, setComment] = useState("")
   
-  console.log(weight, height, temperature, heartBeat, age, gender, animalTag, comment)
   
   const handleSubmit = async () => {
     if (
@@ -99,8 +99,9 @@ const AddExamination = () => {
           selectedValue={animalTag}
           value={animalTag}
           onValueChange={(currentAnimalTag) => setAnimalTag(currentAnimalTag)}
-          style={styles.input}
+          style={styles.picker}
         >
+          <Picker.Item key="" label="select animal" value="" />
           {animals?.map((animal) => (
             <Picker.Item key={animal} label={animal} value={animal} />
           ))}
@@ -153,7 +154,7 @@ const AddExamination = () => {
           selectedValue={gender}
           value={gender}
           onValueChange={(currentGender) => setGender(currentGender)}
-          style={styles.input}
+          style={styles.picker}
         >
           {GENDER?.map((gender) => (
             <Picker.Item key={gender} label={gender} value={gender} />
@@ -227,6 +228,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginBottom: 16,
     backgroundColor: "#fff",
+  },
+  picker: {
+    width: 300,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#666",
   },
   textarea: {
     height: 200,
