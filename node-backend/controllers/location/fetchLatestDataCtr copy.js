@@ -23,4 +23,4 @@ const fetchLatestDataCtr = async (req, res) => {
     })
 }
 
-export default fetchLatestDataCtr
+export default fetchLatestDataCtr;

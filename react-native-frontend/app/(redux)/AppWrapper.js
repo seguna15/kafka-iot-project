@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useEffect } from 'react';
 
 
+
 const AppWrapper = () => {
 
     const dispatch = useDispatch();
@@ -12,6 +13,8 @@ const AppWrapper = () => {
         dispatch(loadUser())
     },[loadUser])
     
+
+
   return (
     <Stack>
       <Stack.Screen

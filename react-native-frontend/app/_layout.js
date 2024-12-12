@@ -7,7 +7,6 @@ import { store } from "./(redux)/store";
 
 
 export default function RootLayout () {
-    
     return (
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>

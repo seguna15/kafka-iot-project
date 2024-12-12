@@ -42,6 +42,29 @@ export const fetchLocation = async () => {
     }
 }
 
+// fetch sensor alerts
+export const fetchAlerts = async () => {
+    const {token}  =  await loadUserFromStorage()
+    
+    try {
+        const response = await axios.get(
+            `${base_url}/location/latest/alert`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }   
+            }
+
+        );
+        
+   
+        return response.data
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const fetchSensors = async () => {
   const { token } = await loadUserFromStorage();
 
