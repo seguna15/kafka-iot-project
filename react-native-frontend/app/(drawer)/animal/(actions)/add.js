@@ -38,7 +38,7 @@ const AddAnimal = () => {
   const [sensorTag, setSensorTag] = useState("")
   const [description, setDescription] = useState("")
   
-  console.log(gender, sensorTag)
+  
   const handleSubmit = async () => {
     if (
       weight === "" ||

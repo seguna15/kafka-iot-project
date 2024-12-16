@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions } from 'react-native'
+import { StyleSheet, View, Dimensions, Text } from 'react-native'
 import {
   LineChart,
   BarChart,
@@ -39,6 +39,7 @@ const LineChartComponent = ({stats}) => {
 
   return (
     <View>
+      <Text style={styles.textStyle}>Average Temperature per hour of the day</Text>
       <LineChart
         data={data}
         width={width} // from react-native
@@ -69,7 +70,7 @@ const LineChartComponent = ({stats}) => {
         }}
       />
 
-      
+      <Text style={styles.textStyle}>Average Heartbeat per hour of the day</Text>
       <LineChart
         data={data1}
         width={width} // from react-native
@@ -105,4 +106,9 @@ const LineChartComponent = ({stats}) => {
 
 export default LineChartComponent
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  textStyle: {
+    color: "green",
+    marginTop: 10,
+  }
+})

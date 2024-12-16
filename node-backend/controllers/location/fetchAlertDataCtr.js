@@ -11,7 +11,7 @@ import Location from "../../models/location.model.js"
 const fetchAlertDataCtr = async (req, res) => {
     const activeAnimalsNumber = await Animal.find({isMonitored: true}).countDocuments();
 
-    const latest = await Location.find()
+    const latest = await Location.find({ userId: req?.userAuthId })
       .select("animalTag heartbeat temperature")
       .sort({ $natural: -1 })
       .limit(activeAnimalsNumber);

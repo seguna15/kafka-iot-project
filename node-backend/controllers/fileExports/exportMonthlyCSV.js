@@ -10,7 +10,10 @@ const exportMonthlyData = async (req, res) => {
        date.getFullYear(),
        date.getMonth(),
      );
-    const  sensors = await Location.find({timestamp: {$gte: month}});
+    const sensors = await Location.find({
+      timestamp: { $gte: month },
+      userId: req?.userAuthId,
+    });
 
 
     sensors.forEach((sensor) => {

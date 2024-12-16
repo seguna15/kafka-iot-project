@@ -9,7 +9,7 @@ initializeNotification();
 export default function Location() {
   
 
-  const [mapRegion, setMapRegion] = useState(null)
+  const [mapData, setMapData] = useState([])
   
   const scheduleNotification = (seconds, data) => {
     Notifications.scheduleNotificationAsync({
@@ -28,9 +28,8 @@ export default function Location() {
     const location = setInterval(async () => {
       const {latest} = await fetchLocation();
      
-      setMapRegion({latitudeDelta: 0.6,
-      longitudeDelta: 0.6,mapData:[...latest]})
-      handleShowNotification()
+      setMapData([...latest])
+      
     }, 5000)
 
     return () => clearTimeout(location);
@@ -51,12 +50,12 @@ export default function Location() {
   
   return (
     <>
-      {mapRegion === null ? (
+      {mapData.length === 0 ? (
         <View style={styles.textContainer}>
           <ActivityIndicator
             animating={true}
             size="large"
-            style={{ opacity: 1}}
+            style={{ opacity: 1 }}
             color="#8ac926"
           />
         </View>
@@ -65,18 +64,18 @@ export default function Location() {
           <MapView
             style={styles.map}
             region={{
-              longitudeDelta: mapRegion?.longitudeDelta,
-              latitudeDelta: mapRegion?.latitudeDelta,
-              longitude: mapRegion?.mapData[0]?.longitude,
-              latitude: mapRegion?.mapData[0]?.latitude,
+              longitudeDelta: 0.6,
+              latitudeDelta: 0.6,
+              longitude: mapData?.[0]?.longitude ,
+              latitude: mapData?.[0]?.latitude,
             }}
           >
-            {mapRegion?.mapData?.map((location) => (
+            {mapData?.map((location) => (
               <Marker
                 key={location?._id}
                 coordinate={{
-                  latitude: location?.latitude,
-                  longitude: location?.longitude,
+                  latitude: location?.latitude || "",
+                  longitude: location?.longitude || "",
                 }}
                 title={location?.animalTag}
                 image={require("../../assets/logo.png")}

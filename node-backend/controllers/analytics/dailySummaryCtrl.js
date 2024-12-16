@@ -22,6 +22,7 @@ const dailySummaryCtrl = async (req, res) => {
         animalTag: {
           $eq: animalTag,
         },
+        
       },
     },
     {

@@ -5,7 +5,7 @@ const CsvParser = csv.Parser;
 
 const exportAllTimeData = async (req, res) => {
     const locations = []
-    const  sensors = await Location.find();
+    const sensors = await Location.find({ userId: req?.userAuthId });
 
 
     sensors.forEach((sensor) => {

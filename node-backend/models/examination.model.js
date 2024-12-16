@@ -7,6 +7,10 @@ const examinationSchema = new Schema({
     ref: "Animal",
     required: true,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
   height: {
     type: Number,
     required: true,

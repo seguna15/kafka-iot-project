@@ -5,6 +5,10 @@ const sensorSchema = new Schema({
         type: String,
         required: true,
     },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
     isActivated: {
         type: Boolean,
         required: true,

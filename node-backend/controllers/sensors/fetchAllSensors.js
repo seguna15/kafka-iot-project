@@ -8,7 +8,7 @@ import Sensor from "../../models/sensor.model.js";
  ** @access PRIVATE
 */
 const fetchAllSensors = async (req, res) => {
-    const sensors = await Sensor.find()
+    const sensors = await Sensor.find({ userId: req?.userAuthId });
 
     return res.status(200).json({
         success: true,

@@ -8,7 +8,10 @@ import Sensor from "../../models/sensor.model.js";
  ** @access PRIVATE
 */
 const fetchAllInactiveSensors = async (req, res) => {
-    const sensors = await Sensor.find({isActivated: false});
+    const sensors = await Sensor.find({
+      isActivated: false,
+      userId: req?.userAuthId,
+    });
 
     return res.status(200).json({
         success: true,

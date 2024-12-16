@@ -12,6 +12,10 @@ const locationSchema = new Schema({
     ref: "Animal",
     required: true,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
   slug: {
     type: String,
     required: true,

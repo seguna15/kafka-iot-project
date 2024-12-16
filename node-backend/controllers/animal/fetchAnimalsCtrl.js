@@ -3,7 +3,7 @@ import Animal from "../../models/animal.model.js";
 
 const fetchAnimalsCtrl = async (req, res) => {
 
-  const animals = await Animal.find();
+  const animals = await Animal.find({ userId: req?.userAuthId });
  
   return res.status(200).json({
     success: true,

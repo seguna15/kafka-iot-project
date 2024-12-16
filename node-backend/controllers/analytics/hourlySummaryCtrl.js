@@ -23,6 +23,7 @@ const hourlySummaryCtrl = async (req, res) => {
         animalTag: {
           $eq: animalTag,
         },
+        
       },
     },
     {

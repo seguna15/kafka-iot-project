@@ -1,9 +1,14 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose from "mongoose";
 
+const Schema = mongoose.Schema;
 const animalSchema = new Schema({
     animalTag: {
         type: String,
         required: true,
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     },
     sensorNumber: {
         type: String,

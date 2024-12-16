@@ -15,8 +15,9 @@ const createExaminationCtrl = async (req, res) => {
     heartBeat,
     gender,
     comment,
-    animalTag
-  }) 
+    animalTag,
+    userId: req?.userAuthId,
+  }); 
 
   if(!examination) {
     throw new ErrorHandler("Unable to create new examination", 400);

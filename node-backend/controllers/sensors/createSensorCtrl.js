@@ -9,6 +9,7 @@ const createSensorCtrl = async (req, res) => {
         sensorTag,
         productNumber,
         description,
+        userId: req?.userAuthId,
     })
 
     if(!sensor) {

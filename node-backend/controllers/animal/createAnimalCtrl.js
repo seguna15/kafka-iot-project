@@ -17,7 +17,8 @@ const createAnimalCtrl = async (req, res) => {
     gender,
     description,
     sensorNumber: sensorTag,
-    animalTag
+    animalTag,
+    userId:  req?.userAuthId,
   }) 
 
   if(!animal) {

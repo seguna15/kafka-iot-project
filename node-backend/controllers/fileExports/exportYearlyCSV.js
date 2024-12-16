@@ -10,7 +10,10 @@ const exportYearlyData = async (req, res) => {
        date.getFullYear(),
        
      );
-    const  sensors = await Location.find({timestamp: {$gte: year}});
+    const sensors = await Location.find({
+      timestamp: { $gte: year },
+      userId: req?.userAuthId,
+    });
 
 
     sensors.forEach((sensor) => {

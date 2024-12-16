@@ -35,7 +35,7 @@ const DropDown = ({sensors, handleSelect}) => {
         activeOpacity={0.8}
         onPress={toggleExpanded}
       >
-        <Text>Select Sensor</Text>
+        <Text>Select Animal</Text>
         <AntDesign name={expanded ? "caretup" : "caretdown"} />
       </TouchableOpacity>
       {expanded ? (

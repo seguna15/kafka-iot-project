@@ -6,6 +6,10 @@ const examinationSchema = new Schema(
       type: String,
       required: true,
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
     temperature: {
       type: Number,
       required: true,

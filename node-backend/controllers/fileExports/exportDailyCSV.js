@@ -11,7 +11,10 @@ const exportDailyData = async (req, res) => {
        date.getMonth(),
        date.getDate()
      );
-    const  sensors = await Location.find({timestamp: {$gte: today}});
+    const sensors = await Location.find({
+      timestamp: { $gte: today },
+      userId: req?.userAuthId,
+    });
 
 
     sensors.forEach((sensor) => {

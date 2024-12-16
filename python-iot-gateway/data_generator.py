@@ -22,7 +22,7 @@ heartbeat = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
 def generate_message() -> dict: 
 
     # fetch all actively monitored animals from the database
-    all_animals = list(db.animals.find({"isMonitored": True}, {"animalTag": 1, "sensorNumber": 1, "_id": 0}))
+    all_animals = list(db.animals.find({"isMonitored": True}, {"animalTag": 1, "sensorNumber": 1, "userId": 1, "_id": 0}))
 
     generatedData = []
     message = ''.join(random.choice(string.ascii_letters) for i in range(32))
@@ -31,6 +31,7 @@ def generate_message() -> dict:
         
         generatedData.append({
             "sensorTag": animal["sensorNumber"],
+            "userId": str(animal["userId"]),
             "animalTag": animal["animalTag"],
             'slug': message,
             "longitude":  random.choice(points)[1],

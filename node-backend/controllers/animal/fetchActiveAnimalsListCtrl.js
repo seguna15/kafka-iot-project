@@ -3,7 +3,10 @@ import Animal from "../../models/animal.model.js";
 
 const fetchActiveAnimalsCtrl = async (req, res) => {
 
-  const animals = await Animal.find({isMonitored: true}).select("animalTag" );
+  const animals = await Animal.find({
+    isMonitored: true,
+    userId: req?.userAuthId,
+  }).select("animalTag");
   const newAnimalArray = animals.map(animal => {
     return animal.animalTag;
   })
